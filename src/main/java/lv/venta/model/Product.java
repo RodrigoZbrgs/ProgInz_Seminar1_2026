@@ -34,12 +34,10 @@ public class Product {
 	
 	@Column(name = "Category")
 	@NotNull
-	@NotEmpty
 	private Category category;
 	
-	@Column(name = "Description")
+	@Column(name = "Description")	
 	@NotNull
-	@NotEmpty
 	private String description;
 	
 	@Column(name = "Quantity")
