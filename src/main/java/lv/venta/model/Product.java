@@ -6,6 +6,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Table(name = "ProductTable")
 @Entity
@@ -16,19 +21,30 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)//auto increment datubāzē izveidos nunmuru pec kartas un unikalu id
 	private int id;
 	
+	@Min(0)
+	@Max(10000)
 	@Column(name = "Price")
 	private float price;
 	
 	@Column(name = "Title", unique = true)
+	@NotNull
+	@NotEmpty
+	@Pattern(regexp = "[A-Ž]{1}[a-ž]{2,20}")
 	private String title;
 	
 	@Column(name = "Category")
+	@NotNull
+	@NotEmpty
 	private Category category;
 	
 	@Column(name = "Description")
+	@NotNull
+	@NotEmpty
 	private String description;
 	
 	@Column(name = "Quantity")
+	@Min(0)
+	@Max(10000)
 	private int quantity;
 	
 
