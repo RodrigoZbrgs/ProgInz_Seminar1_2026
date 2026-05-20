@@ -1,11 +1,12 @@
 package lv.venta.service.impl;
 
 import java.util.ArrayList;
-import java.util.Locale.Category;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lv.venta.model.Category;
 import lv.venta.model.Product;
 import lv.venta.repo.IProductRepo;
 import lv.venta.service.IProductFillerAndStatsService;
@@ -26,7 +27,7 @@ public class FiltetStatsProductServiceImpl implements IProductFillerAndStatsServ
 			throw new Exception("DB nav produktu, tāpēc neko nevar filtrēt");
 		}
 
-		ArrayList<Product> filteredProducts = prodRepo.findbyPriceLessThan(threshold);
+		ArrayList<Product> filteredProducts = prodRepo.findByPriceLessThan(threshold);
 		if (filteredProducts.isEmpty()) {
 			throw new Exception("Nav neviena produkts kura cena ir mazaka par " + threshold + "eur");
 		}
@@ -43,7 +44,7 @@ public class FiltetStatsProductServiceImpl implements IProductFillerAndStatsServ
 			throw new Exception("DB nav produktu, tāpēc neko nevar filtrēt");
 		}
 
-		ArrayList<Product> filteredProducts = prodRepo.findbyCategory(category);
+		ArrayList<Product> filteredProducts = prodRepo.findByCategory(category);
 
 		if (filteredProducts.isEmpty()) {
 			throw new Exception("Nav neviens produkts" + category + "kategorija");

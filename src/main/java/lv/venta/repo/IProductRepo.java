@@ -13,9 +13,9 @@ public interface IProductRepo extends CrudRepository<Product, Integer>{
 	//te automatiski izveidosies vaicājums: SELECT * FROM PRODUCT_TABLE WHERE TITLE=title, bet atgriezīs true, ja būs kādi dati
 	public abstract boolean existsByTitle(String title);
 
-	public abstract ArrayList<Product> findbyCategory(Category category);
+	public abstract ArrayList<Product> findByCategory(lv.venta.model.Category category);
 
-	public abstract ArrayList<Product> findbyPriceLessThan(float threshold);
+	public abstract ArrayList<Product> findByPriceLessThan(float threshold);
 
 	public abstract ArrayList<Product> findByTitleContainingOrDescriptionContaining(String keyword, String keyword2);
 
