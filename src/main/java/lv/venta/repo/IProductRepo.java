@@ -3,6 +3,7 @@ package lv.venta.repo;
 import java.util.ArrayList;
 import java.util.Locale.Category;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import lv.venta.model.Product;
@@ -13,5 +14,14 @@ public interface IProductRepo extends CrudRepository<Product, Integer>{
 	public abstract boolean existsByTitle(String title);
 
 	public abstract ArrayList<Product> findbyCategory(Category category);
+
+	public abstract ArrayList<Product> findbyPriceLessThan(float threshold);
+
+	public abstract ArrayList<Product> findByTitleContainingOrDescriptionContaining(String keyword, String keyword2);
+
+	@Query(nativeQuery = true, value = "SELECT AVG(price) FROM product_table;")
+	public abstract float calculateAVGPriceFromDB();
+
+
 
 }
